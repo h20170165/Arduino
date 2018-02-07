@@ -19,8 +19,10 @@ for(int i=0;i<len;++i)
 Serial.print(char(msg[i]));
 Serial.println();
 if(char(msg[0])=='0' && char(msg[1])<'5')
+{
   digitalWrite(2,HIGH);
-else
- digitalWrite(2,LOW);   
+  delay(50);
+}  
 }
+digitalWrite(2,LOW);
 }
