@@ -22,7 +22,10 @@ digitalWrite(8,LOW);
 duration=pulseIn(3,HIGH);
 distance=(duration*.0343)/2;
 if(count==0)
+{
+    Serial.write(13);
 txmit_distance(distance);
+}
 count=(count+1)%100;
 }
 void txmit_distance(int distance)
@@ -33,6 +36,5 @@ void txmit_distance(int distance)
    msg[1]=distance%10+48;
    msg[0]=distance/10+48;
    vw_send((uint8_t *)msg, strlen(msg));
-   vw_wait_tx();
+   //vw_wait_tx();
 }
-
